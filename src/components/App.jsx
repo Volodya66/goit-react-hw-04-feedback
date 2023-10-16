@@ -14,24 +14,19 @@ class App extends Component {
   };
  
 
-
-clickGood = () => {this.setState({ good: this.state.good + 1 });};
-clickNeutral = () => { this.setState({ neutral:this.state.neutral + 1 }); };
-clickBad = () => { this.setState({ bad: this.state.bad + 1 }); };
+clickOnButton = option => {this.setState((prevState) => {
+  return {
+    [option]: prevState[option] + 1,
+  };
+}); }
   
 countTotalFeedback = () => {return this.state.good + this.state.neutral + this.state.bad};
 countPositiveFeedbackPercentage = () => { return Math.ceil(((this.state.good - this.state.bad + this.state.neutral) / this.countTotalFeedback()) * 100).toFixed(0) };
   
-  onLeaveFeedback = evt => {
-    if (evt.target.textContent === Object.keys(this.state)[0]) {
-      return this.clickGood()
-    } else if (evt.target.textContent === Object.keys(this.state)[1]) {
-      return this.clickNeutral()
-    } else if (evt.target.textContent === Object.keys(this.state)[2]) {
-      return this.clickBad()
-    }
-    return
-  };
+onLeaveFeedback = evt => {
+  const option = evt.target.textContent;
+  this.clickOnButton(option)
+};
 
   render() {
     
