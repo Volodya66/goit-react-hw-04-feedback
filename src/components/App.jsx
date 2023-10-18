@@ -21,7 +21,12 @@ clickOnButton = option => {this.setState((prevState) => {
 }); }
   
 countTotalFeedback = () => {return this.state.good + this.state.neutral + this.state.bad};
-countPositiveFeedbackPercentage = () => { return Math.ceil(((this.state.good - this.state.bad + this.state.neutral) / this.countTotalFeedback()) * 100).toFixed(0) };
+countPositiveFeedbackPercentage = () => {
+const result = Math.ceil(((this.state.good - this.state.bad + this.state.neutral) / this.countTotalFeedback()) * 100).toFixed(0)
+if (result < 0) { return 0 };
+return result;
+};
+
   
 onLeaveFeedback = evt => {
   const option = evt.target.textContent;
@@ -36,7 +41,7 @@ onLeaveFeedback = evt => {
       <div className="App">
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
-            options={state}
+            options={Object.keys(state)}
             onLeaveFeedback={this.onLeaveFeedback}
             />
         </Section>

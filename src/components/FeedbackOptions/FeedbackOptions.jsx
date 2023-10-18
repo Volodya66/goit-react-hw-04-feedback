@@ -7,7 +7,7 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     return (
         <ul  className={css.list}>
   
-         {Object.keys(options).map(option => (
+         {options.map(option => (
         <li key={option}>
           <Button text={option.toLowerCase()} functions={onLeaveFeedback} />
         </li>
