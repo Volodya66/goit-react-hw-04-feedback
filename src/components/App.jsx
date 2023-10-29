@@ -14,6 +14,7 @@ class App extends Component {
   };
  
 
+  
 clickOnButton = option => {this.setState((prevState) => {
   return {
     [option]: prevState[option] + 1,
