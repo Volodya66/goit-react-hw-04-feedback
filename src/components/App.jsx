@@ -16,13 +16,13 @@ const [bad, setBed] = useState(0);
 const clickOnButton = option => {
   switch (option) {
     case 'good':
-      setGood(good + 1);
+      setGood(prevState=> prevState +1);
       break;
     case 'neutral':
-      setNeutral(neutral + 1);
+      setNeutral(prevState=> prevState +1);
       break;
     case 'bad':
-      setBed(bad + 1);
+      setBed(prevState=> prevState +1);
       break;
     default: console.error("error case option")
  }
